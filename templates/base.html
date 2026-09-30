@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Agencia de Viajes - TurismoApp</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+</head>
+<body class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="{% url 'inicio_destinos' %}">TurismoApp</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="{% url 'lista_destinos' %}">Destinos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'lista_paquetes' %}">Paquetes</a></li>
+                </ul>
+                <a href="/admin/" class="btn btn-light btn-sm fw-bold">Ir a Django Admin</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="bg-white text-center py-4 shadow-sm mb-4">
+        <h1>Bienvenido a tu próxima aventura</h1>
+        <p class="text-muted mb-0">Sistema conectado a Base de Datos Relacional con Django ORM</p>
+    </header>
+
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <footer class="text-center mt-5 py-4 bg-dark text-white">
+        <p class="mb-0">Proyecto Evaluación Sumativa 2 - Programación Back End</p>
+    </footer>
+
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

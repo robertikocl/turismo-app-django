@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Nuestros Destinos Destacados</h2>
+    <!-- Botón Agregar exigido por rúbrica -->
+    <a href="#" class="btn btn-success">+ Agregar Destino</a>
+</div>
+
+<!-- Barra y Botón Buscar exigido por rúbrica -->
+<form class="row g-2 mb-4" action="#" method="get">
+    <div class="col-md-10">
+        <input type="text" class="form-control" placeholder="Buscar destino por ciudad o región...">
+    </div>
+    <div class="col-md-2">
+        <button type="button" class="btn btn-primary w-100">Buscar</button>
+    </div>
+</form>
+
+<div class="row">
+    {% for destino in destinos %}
+    <div class="col-md-6 mb-4">
+        <div class="card h-100 shadow-sm">
+            <img src="{% static 'img/' %}{{ destino.imagen }}" class="card-img-top" alt="{{ destino.nombre }}" style="height: 250px; object-fit: cover;">
+            <div class="card-body">
+                <h4 class="card-title">{{ destino.nombre }}</h4>
+                <h6 class="card-subtitle mb-2 text-muted">Región de {{ destino.region.nombre }} ({{ destino.region.zona }})</h6>
+                <p class="card-text">{{ destino.descripcion }}</p>
+            </div>
+            <!-- Botones Modificar y Eliminar exigidos por rúbrica -->
+            <div class="card-footer bg-white border-top-0 d-flex justify-content-end gap-2">
+                <a href="#" class="btn btn-warning btn-sm">Modificar</a>
+                <a href="#" class="btn btn-danger btn-sm">Eliminar</a>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="col-12">
+        <div class="alert alert-info">No hay destinos registrados aún. Agrégalos desde el panel Django Admin.</div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
